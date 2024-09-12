@@ -1,0 +1,45 @@
+name: Deploy VitePress site to Pages
+
+on:
+  push:
+    branches: ['*']
+
+  workflow_dispatch:
+
+jobs:
+  deploy-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        # 可选指定分支或默认主分支
+        # with:
+        #   ref: 'main'
+
+      - name: Install yarn
+        run: corepack enable
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build Site
+        # 编译 pdf
+        run: yarn pdf
+        # 编译文档
+        run: yarn build
+
+      # 将文档产物提交到gh-pages分支
+
+      - name: Deploy for github
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: doc/.vitepress/dist
+          # enable single-commit to reduce the repo size
+          single-commit: true
+          clean: true
