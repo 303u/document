@@ -360,14 +360,6 @@
     picocolors "^1.0.0"
     semver "^7.6.2"
 
-"@condorhero/vuepress-plugin-export-pdf-v2@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@condorhero/vuepress-plugin-export-pdf-v2/-/vuepress-plugin-export-pdf-v2-3.0.3.tgz#5d105f846735ea45ab624965adc0b17a7afc7a1e"
-  integrity sha512-ho40tt95ojOAU362UafWtjMKZd15hDtAMFtuPq8CTQAIkYqlvLNvwHjH1vSsY062DTsZuHsi/2OjGKfB6EKtAw==
-  dependencies:
-    "@condorhero/vuepress-plugin-export-pdf-core" "^3.0.3"
-    debug "^4.3.4"
-
 "@docsearch/css@3.6.0", "@docsearch/css@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.6.0.tgz#0e9f56f704b3a34d044d15fd9962ebc1536ba4fb"
