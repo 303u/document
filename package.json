@@ -3,7 +3,7 @@
     "dev": "vitepress dev doc",
     "build": "vitepress build doc",
     "preview": "vitepress preview doc",
-    "pdf": "press-export-pdf export ./doc"
+    "pdf": "press-export-pdf export doc"
   },
   "dependencies": {
     "vitepress": "1.0.1",
