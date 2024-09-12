@@ -2,21 +2,7 @@ import fs from "fs";
 import type { DefaultTheme } from 'vitepress';
 import { defineUserConfig } from 'vitepress-export-pdf';
 
-import userConfig from './config/index.mjs';
 import { sidebarTOC } from './config/zh_CN.mjs';
-
-function extractLinksFromConfig(config: DefaultTheme.Config) {
-    const links: string[] = [];
-
-    if (config.sidebar?.length) {
-        for (const key in config.sidebar) {
-            extractLinks(config.sidebar[key]);
-        }
-    } else {
-    }
-
-    return links;
-}
 
 function extractLinksFromDir(dirPath: string, arrayOfFiles: string[] = []) {
     const files = fs.readdirSync(dirPath);
@@ -35,9 +21,6 @@ function extractLinksFromDir(dirPath: string, arrayOfFiles: string[] = []) {
 
     return arrayOfFiles;
 }
-const all_files = extractLinksFromDir("./doc/zh_CN", []);
-const side_links: string[] = [];
-const exc_files: string[] = [];
 function extractLinks(sidebar: DefaultTheme.SidebarItem[]) {
     for (const item of sidebar) {
         if (item.items) {
@@ -54,6 +37,9 @@ function extractLinks(sidebar: DefaultTheme.SidebarItem[]) {
         }
     }
 }
+const all_files = extractLinksFromDir("./doc/zh_CN", []);
+const side_links: string[] = [];
+const exc_files: string[] = [];
 extractLinks(sidebarTOC());
 
 // 未添加到侧边栏的 md 文件将被忽略
