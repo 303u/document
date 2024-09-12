@@ -27,9 +27,19 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build pdf
-        # 编译 pdf
-        run: yarn pdf
+      - uses: docker/build-push-action@v2
+        with:
+          push: false
+          tags: my-pdf-image
+
+      - uses: docker/run-action@v2
+        with:
+          image: my-pdf-image
+          args: yarn pdf
+
+      # - name: Build pdf
+      #   # 编译 pdf
+      #   run: yarn pdf
 
       - name: Build Site
         # 编译文档
